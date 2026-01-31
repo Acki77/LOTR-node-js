@@ -1,11 +1,12 @@
 import { volumes } from "../../lib/data";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Fellowship() {
-  const volume = volumes.find(
-    ({ slug }) => slug === "the-fellowship-of-the-ring"
-  );
+  const router = useRouter();
+  const { slug } = router.query;
+  const volume = volumes.find((volume) => volume.slug === slug);
 
   if (!volume) return null;
 

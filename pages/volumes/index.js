@@ -1,24 +1,29 @@
 import Link from "next/link";
+import Head from "next/head";
+import { volumes } from "@/lib/data";
+import Image from "next/image";
 
 export default function Volumes() {
   return (
-    <div>
+    <>
+      <Head>List of all Volumes</Head>
       <h1>All Volumes</h1>
       <ul>
-        <li>
-          <Link href="/volumes/the-fellowship-of-the-ring">
-            The Fellowship of the Ring
-          </Link>
-        </li>
-        <li>
-          <Link href="/volumes/the-two-towers">The Two Towers</Link>
-        </li>
-        <li>
-          <Link href="/volumes/the-return-of-the-king">
-            The Return of the King
-          </Link>
-        </li>
+        {volumes.map((volume) => {
+          return (
+            <li key={volumes.id}>
+              <Link href={`/volumes/${volume.slug}`}>{volume.title}</Link>
+              <br />
+              <Image
+                src={volume.cover}
+                alt={volume.title}
+                width={70}
+                height={115}
+              />
+            </li>
+          );
+        })}
       </ul>
-    </div>
+    </>
   );
 }
