@@ -2,6 +2,7 @@ import { volumes } from "../../lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Fellowship() {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function Fellowship() {
 
   return (
     <div>
+      <Head>All Volumes</Head>
       <Link href="/volumes">← All Volumes</Link>
       <h1>{volume.title}</h1>
       <p>{volume.description}</p>
